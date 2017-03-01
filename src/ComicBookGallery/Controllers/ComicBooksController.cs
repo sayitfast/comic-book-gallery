@@ -12,6 +12,12 @@ namespace ComicBookGallery.Controllers
             _comicBookRepository = new ComicBookRepository();
         }
 
+        public ActionResult Index()
+        {
+            var comicBooks = _comicBookRepository.GetComicBooks();
+
+            return View(comicBooks);
+        }
         public ActionResult Detail(int? id)  // ? is if no id value is provided a null is past and will not through an error... we need ID but routing says id is optional.
         {
             if (id == null)
