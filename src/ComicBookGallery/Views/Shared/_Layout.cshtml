@@ -27,13 +27,13 @@
         </div>
     </div>
 
-    <div class="container body-content">
-        @RenderBody() <!-- comes from the view -->
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - Comic Book Gallery</p>
-        </footer>
-    </div>
+<div class="container body-content">
+    @RenderBody() <!-- comes from the view -->
+    <hr/>
+    <footer>
+        <p>&copy; @DateTime.Now.Year - Comic Book Gallery ---- Today is @Html.Raw(DateTime.Now.ToString("dddd, MMMM d, yyyy"))</p>
+    </footer>
+</div>
 
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>

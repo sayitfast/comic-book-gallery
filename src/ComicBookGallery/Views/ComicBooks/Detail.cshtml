@@ -12,12 +12,58 @@
 @if (ViewBag.Artists.Length > 0)
 {
     <h5>Artists</h5>
-            <div>
-                <ul>
-                    @foreach (var artist in ViewBag.Artists)
-                    {
-                        <li>@artist</li>
-                    }
-                </ul>
-            </div>
+    <div>
+        <ul>
+            @foreach (var artist in ViewBag.Artists)
+            {
+                <li>@artist</li>
+            }
+        </ul>
+    </div>
 }
+@*<p>@DateTime.Now</p>
+<p>@DateTime.IsLeapYear(2016)</p>
+<p>Last week this time: @(DateTime.Now - TimeSpan.FromDays(7))</p>
+<p>@@Username</p>
+
+@{
+    var output = "Hello World";
+}
+
+<p>The rendered result: @output</p>
+
+@{
+    var value = 1;
+}
+@if (value % 2 == 0)
+{
+    <p>The value was even</p>
+}
+else if (value >= 1337)
+{
+    <p>The value is large.</p>
+}
+else
+{
+    <p>The value was not large and is odd.</p>
+}
+@using (Html.BeginForm())
+{
+    <div>
+        email:
+        <input type="email" id="Email" name="Email" value="" />
+        <button type="submit"> Register </button>
+    </div>
+}
+@try
+{
+    throw new InvalidOperationException("You did something invalid.");
+}
+catch (Exception ex)
+{
+    <p>The exception message: @ex.Message</p>
+}
+finally
+{
+    <p>The finally statement.</p>
+}*@
