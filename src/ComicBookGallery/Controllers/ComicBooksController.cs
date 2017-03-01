@@ -1,46 +1,24 @@
 ﻿using System.Web.Mvc;
-using ComicBookGallery.Models;
+using ComicBookGallery.Data;
 
 namespace ComicBookGallery.Controllers
 {
     public class ComicBooksController : Controller
     {
-        public ActionResult Detail()
+        private ComicBookRepository _comicBookRepository = null;
+
+        public ComicBooksController()
         {
-            //if (DateTime.Today.DayOfWeek == DayOfWeek.Tuesday)
-            //{
-            //    return Redirect("/");
-            //}
-            //return Content("Hello from the comic books controller");
+            _comicBookRepository = new ComicBookRepository();
+        }
 
-            // moved below to repository
-            //var comicBook = new ComicBook
-            //{
-            //    SeriesTitle =  "The Amazing Spider-Man",
-            //    IssueNumber = 700,
-            //    DescriptionHtml = "<p>Final issue! Witness the final hours of Doctor Octopus' life and his one, last, great act of revenge! Even if Spider-Man survives... <strong>will Peter Parker?</strong></p>",
-            //    Artist = new Artist[]
-            //    {
-            //        new Artist {Name = "Dan Slott", Role = "Script"},
-            //        new Artist {Name = "Humberto Ramos", Role = "Pencils"},
-            //        new Artist {Name = "Victor Olazaba", Role = "Inks"},
-            //        new Artist {Name = "Edgar Delgado", Role = "Colors"},
-            //        new Artist {Name = "Chris Eliopoulos", Role = "Letters"}
-            //    }
-            //};
-
-            //ViewBag.SeriesTitle = "The Amazing Spider-Man";
-            //ViewBag.IssueNumber = "700";
-            //ViewBag.Description = "<p>Final issue! Witness the final hours of Doctor Octopus' life and his one, last, great act of revenge! Even if Spider-Man survives... <strong>will Peter Parker?</strong></p>";
-            //ViewBag.Artists = new[]
-            //{
-            //    "Script: Dan Slott",
-            //    "Pencils: Humberto Ramos",
-            //    "Inks: Victor Olazaba",
-            //    "Colors: Edgar Delgado",
-            //    "Letters: Chris Eliopoulos"
-            //};
-
+        public ActionResult Detail(int? id)  // ? is if no id value is provided a null is past and will not through an error... we need ID but routing says id is optional.
+        {
+            if (id == null)
+            {
+                return HttpNotFound();
+            }
+            var comicBook = _comicBookRepository.GetComicBook(id.Value);  // could also use (int)id
 
             return View(comicBook);
         }
